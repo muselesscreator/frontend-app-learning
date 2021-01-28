@@ -1,0 +1,72 @@
+@import "~font-awesome/css/font-awesome.min.css";
+.StreakModal {
+  text-align: center;
+
+  .modal-header {
+    padding-bottom: 0;
+    border-bottom: 0; // override default hr line
+    justify-content: center;
+
+    button {
+      // This lets us center the modal title at full width, without taking button width into account
+      position: absolute;
+      right: 1rem;
+    }
+
+    button::after {
+      content: none;
+    }
+  }
+
+  .modal-title {
+    padding-top: 20px;
+  }
+
+  .modal-body {
+    padding-top: 8px;
+    font-size: 1.2rem;
+  }
+
+  .modal-footer {
+    border-top: 0; // override default hr line
+    justify-content: center;
+
+    button {
+      @extend .btn-primary;
+      font-size: 1.2rem;
+      width: 50%;
+    }
+  }
+
+  .lightbulb {
+    margin-left: 16px !important;
+  }
+
+  .calendar {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .factoidWrapper {
+    font-size: 14px;
+    text-align: left;
+    max-width: 85% !important;
+  }
+}
+
+
+@media screen and (min-width: 570px) {
+  .StreakModal {
+    width: 532px;
+    max-width: 532px;
+
+    .calendar {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .factoidWrapper {
+      max-width: 90% !important;
+    }
+  }
+}

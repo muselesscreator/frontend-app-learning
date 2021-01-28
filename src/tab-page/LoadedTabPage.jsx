@@ -7,6 +7,7 @@ import { getConfig } from '@edx/frontend-platform';
 import { Header, CourseTabsNavigation } from '../course-header';
 import { useModel } from '../generic/model-store';
 import { AlertList } from '../generic/user-messages';
+import StreakModal from '../shared/streak-celebration';
 import InstructorToolbar from '../instructor-toolbar';
 import useEnrollmentAlert from '../alerts/enrollment-alert';
 import useLogistrationAlert from '../alerts/logistration-alert';
@@ -24,6 +25,7 @@ function LoadedTabPage({
     org,
     tabs,
     title,
+    celebrations,
   } = useModel(metadataModel, courseId);
 
   // Logistration and enrollment alerts are only really used for the outline tab, but loaded here to put them above
@@ -32,6 +34,8 @@ function LoadedTabPage({
   const enrollmentAlert = useEnrollmentAlert(courseId);
 
   const activeTab = tabs.filter(tab => tab.slug === activeTabSlug)[0];
+
+  const shouldCelebrateStreak = celebrations && celebrations.shouldCelebrateStreak;
 
   return (
     <>
@@ -47,6 +51,13 @@ function LoadedTabPage({
         <InstructorToolbar
           courseId={courseId}
           unitId={unitId}
+        />
+      )}
+      {shouldCelebrateStreak && (
+        <StreakModal
+          courseId={courseId}
+          metadataModel={metadataModel}
+          open
         />
       )}
       <main id="main-content" className="d-flex flex-column flex-grow-1">
