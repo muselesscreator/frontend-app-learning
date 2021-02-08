@@ -5,8 +5,11 @@ import { Collapsible, IconButton } from '@edx/paragon';
 import { faCheckCircle as fasCheckCircle, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle as farCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import EffortEstimate from '../../shared/effort-estimate';
 import SequenceLink from './SequenceLink';
 import { useModel } from '../../generic/model-store';
+
 import genericMessages from '../../generic/messages';
 import messages from './messages';
 
@@ -64,6 +67,7 @@ function Section({
         <span className="sr-only">
           , {intl.formatMessage(complete ? messages.completedSection : messages.incompleteSection)}
         </span>
+        <EffortEstimate className="ml-3" block={section} />
       </div>
     </div>
   );
